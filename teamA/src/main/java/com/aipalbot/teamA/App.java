@@ -2,6 +2,9 @@ package com.aipalbot.teamA;
 
 import java.util.Scanner;
 
+import com.aipalbot.teamA.model.Student;
+import com.aipalbot.teamA.services.StudentService;
+
 /**
  * Hello world!
  *
@@ -10,79 +13,41 @@ public class App
 {
     public static void main( String[] args )
     {
-       // System.out.println( "Hello World!" );
-    	
-    	int row ;
-    	int col ;
-    	int row2 ;
-    	int  col2;
+        System.out.println( "Hello World!" );
         
-      Scanner input = new Scanner(System.in);
-		System.out.println("Enter the first no of row:-");
-		 row = input.nextInt();
-		
-		System.out.println("Enter the first no of col:-");
-		 col = input.nextInt();
-		
-		
-		System.out.println("print the result out:-");
-    	 row2 = input.nextInt();
-    	
-    	 System.out.println("print the result out:-");
-    	 col2 = input.nextInt();
-    	 
-    	 if(row==col)
-    	 {
-    	int matrixA[][]= new  int[row][col];
-    	int matrixB[][] = new int[row2][col2];
-    	int result[][]  = new int[row][col2];
-    	
-    System.out.println("Enter the element of matrix:-");
-   
-    	
-    	for(int i = 0; i< row; i++) 
-    	{
-			for(int j = 0; j < col; j++) 
-			
-				matrixA[i][j] = input.nextInt();
-				
-			}
-			
-			System.out.println("Enter the element of matrix2:-");
-			
-			for(int i = 0; i< row2; i++) 
-	    	{
-				for(int j = 0; j < col2; j++) 
-				
-					matrixB[i][j] = input.nextInt();
-			}
-			
-			 System.out.println("\n\noutput matrix:-");
-			
-			for(int i = 0; i< row; i++) 
-	    	
-			for(int j = 0; j < col2; j++) 
-				{
-				int sum = 0;
-					
-			for(int k = 0; k < row2; k++) {
-					
-				sum += matrixA[i][k] * matrixB[k][j];
-				}
-				
-		result[i][j] =sum;
-				
-	}
-			for(int i = 0; i< row; i++) {
-		    	
-				for(int j = 0; j < col2; j++) 
-					
-					 System.out.print(result[i][j] + " ");
-					
-				System.out.println();
-	}
-    }
-    	 else 
-    		 System.out.print("multiplication does not exist in the matrix");
-}
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter Student First Name");
+        String studentFirstName = input.nextLine();
+        
+        Scanner input1 = new Scanner(System.in);
+        
+        
+        System.out.println("Enter Student Last Name");
+        String studentLastName = input1.nextLine();
+        
+        System.out.println("Enter Student Id No");
+        String studentId= input.nextLine();
+        
+        System.out.println("Enter Student Level");
+        String studentLevel = input.nextLine();
+        
+        System.out.println("Enter Student Department");
+        String studentDepartment = input.nextLine();
+        
+        System.out.println("Enter Student Course");
+        String studentCourse = input.nextLine();
+        
+        
+        StudentService studentService = new StudentService();
+        
+        Student newStudent = studentService.registrationStudent(studentFirstName, studentLastName, studentId, studentDepartment, studentLevel, studentCourse);
+        
+       System.out.println(studentService.learn(newStudent));
+        
+        
+        
+        
+        
+    	}
 }
